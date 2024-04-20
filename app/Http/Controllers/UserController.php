@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -60,9 +61,18 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, string $id)
     {
-        //
+        $data = $request->all();
+
+        $item = User::findOrFail($id);
+        
+        $item->update($data);
+
+        return redirect(route('users'))->with([
+            'message' => "User updated successfully",
+            'type' => 'success'
+        ]);    
     }
 
     /**

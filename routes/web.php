@@ -23,6 +23,8 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users');
     Route::get('/users/{id}', [UserController::class, 'edit'])->name('users.edit');
+    Route::post('/users/{user}', [UserController::class, 'update'])->name('users.update');
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
