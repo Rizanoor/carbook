@@ -8,23 +8,6 @@ import { Link } from '@inertiajs/react';
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
-    const menu = [
-        {
-            name : 'Dashboard',
-            href : route('dashboard'),
-            current : route().current('dashboard*')
-        },
-        {
-            name : 'Users',
-            href : route('users'),
-            current : route().current('users*')
-        },
-        {
-            name : 'Dashboard',
-            href : route('dashboard'),
-            current : route().current('dashboard*')
-        },
-    ]
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -39,11 +22,18 @@ export default function Authenticated({ user, header, children }) {
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            {menu.map((item, index) => (
-                                <NavLink key={index} href={item.href} active={item.current}>
-                                    {item.name}
+                                <NavLink href={route('dashboard')} active={route().current('dashboard*')}>
+                                    Dashboard
                                 </NavLink>
-                            ))}
+                                <NavLink href={route('users')} active={route().current('users*')}>
+                                    Users
+                                </NavLink>
+                                <NavLink href={route('category')} active={route().current('category*')}>
+                                    Category
+                                </NavLink>
+                                <NavLink href={route('product')} active={route().current('product*')}>
+                                    Products
+                                </NavLink>
                             </div>
                         </div>
 
@@ -56,7 +46,7 @@ export default function Authenticated({ user, header, children }) {
                                                 type="button"
                                                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                {user.name}
+                                                {/* {user.name} */}
 
                                                 <svg
                                                     className="ms-2 -me-0.5 h-4 w-4"
@@ -119,8 +109,8 @@ export default function Authenticated({ user, header, children }) {
 
                     <div className="pt-4 pb-1 border-t border-gray-200">
                         <div className="px-4">
-                            <div className="font-medium text-base text-gray-800">{user.name}</div>
-                            <div className="font-medium text-sm text-gray-500">{user.email}</div>
+                            {/* <div className="font-medium text-base text-gray-800">{user.name}</div> */}
+                            {/* <div className="font-medium text-sm text-gray-500">{user.email}</div> */}
                         </div>
 
                         <div className="mt-3 space-y-1">

@@ -6,7 +6,8 @@ import { router } from '@inertiajs/react'
 
 
 
-export default function CategoryIndex({ auth, category }) {
+export default function ProductIndex({ auth, product }) {
+    console.log(product);
     function deletePost( id ) {
         router.delete(`/category/${id}`);
     }
@@ -16,15 +17,15 @@ export default function CategoryIndex({ auth, category }) {
             user={auth}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Category
+                    Product
                 </h2>
             }
         >
-            <Head title="Category" />
+            <Head title="Product" />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <Link href={route('category.create')} className="inline-flex items-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">create</Link>
+                    <Link href={route('product.create')} className="inline-flex items-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">create</Link>
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-4">
                         <div className="p-6 text-gray-900 overflow-x-auto">
                             <table className="min-w-full divide-y divide-gray-200">
@@ -46,13 +47,19 @@ export default function CategoryIndex({ auth, category }) {
                                             scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                         >
-                                            Slug
+                                            Category
                                         </th>
                                         <th
                                             scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                         >
-                                            Created_at
+                                            Price
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                        >
+                                            Time
                                         </th>
                                         <th
                                             scope="col"
@@ -63,7 +70,7 @@ export default function CategoryIndex({ auth, category }) {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
-                                    {category.map((category, index) => (
+                                    {product.map((product, index) => (
                                         <tr
                                             key={index}
                                             className="hover:bg-gray-100"
@@ -72,19 +79,19 @@ export default function CategoryIndex({ auth, category }) {
                                                 {index + 1}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                {category.name}
+                                                {product.name}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                {category.slug}
+                                                {product.slug}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                {moment(category.created_at).format('DD MMM YYYY')}
+                                                {moment(product.created_at).format('DD MMM YYYY')}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <Link
                                                     href={route(
-                                                        "category.edit",
-                                                        category.id
+                                                        "product.edit",
+                                                        product.id
                                                     )}
                                                     className="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
                                                 >
@@ -92,7 +99,7 @@ export default function CategoryIndex({ auth, category }) {
                                                 </Link>
                                                 <span>&nbsp;</span>
                                                 <PrimaryButton
-                                                    onClick={() => deletePost(category.id)}
+                                                    onClick={() => deletePost(product.id)}
                                                     className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
                                                 >
                                                     Delete
