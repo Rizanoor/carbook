@@ -5,7 +5,7 @@ import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, useForm } from "@inertiajs/react";
 
-export default function Edit({ auth, category }) {
+export default function CategoryEdit({ auth, category }) {
     const { data, setData, processing, errors, post } = useForm({
         ...category
     });
