@@ -7,7 +7,6 @@ import { router } from '@inertiajs/react'
 
 
 export default function ProductIndex({ auth, product }) {
-    console.log(product);
     function deletePost( id ) {
         router.delete(`/category/${id}`);
     }
@@ -85,14 +84,14 @@ export default function ProductIndex({ auth, product }) {
                                                 {product.slug}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
+                                                {product.price.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap">
                                                 {moment(product.created_at).format('DD MMM YYYY')}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <Link
-                                                    href={route(
-                                                        "product.edit",
-                                                        product.id
-                                                    )}
+                                                    href=""
                                                     className="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
                                                 >
                                                     Edit
