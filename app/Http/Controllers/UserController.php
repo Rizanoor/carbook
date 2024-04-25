@@ -50,7 +50,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $users = User::findOrFail($id);
+        // $users = User::findOrFail($id);
+        $users = User::where('name', $id)->firstOrFail();
+
 
         return Inertia::render('User/Edit', [
             'users' => $users,
