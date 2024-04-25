@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProductController extends Controller
 {
@@ -24,16 +29,39 @@ class ProductController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return inertia('Product/Create');
+    {        
+        return Inertia::render('Product/Create', [
+            'category' => Category::all(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $data['slug'] = Str::slug($data['name']);
+        // $data['photos'] = Storage::disk('public')->put('assets/product', $request->file('photos'));
+
+        if ($request->hasFile('photos')) {
+            $filePaths = [];
+    
+            foreach ($request->file('photos') as $file) {
+                $path = $file->store('assets/product', 'public');
+                $filePaths[] = $path;
+            }
+    
+            $data['photos'] = json_encode($filePaths);
+        }
+        
+        Product::create($data);
+
+        return redirect(route('product'))->with([
+            'message' => "Product inserted successfully",
+            'type' => 'success'
+        ]);
     }
 
     /**
