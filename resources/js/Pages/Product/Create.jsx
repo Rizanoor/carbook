@@ -175,6 +175,7 @@ export default function ProductCreate({ auth, category }) {
                                 {errors.time && (
                                     <p className="text-red-500 text-sm mt-1">{errors.time}</p>
                                 )}
+                                {/* disini mas input filenya */}
 {/* 
                                 <InputLabel
                                     htmlFor="photos"
