@@ -40,6 +40,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        // disini mas functionnya
         $data = $request->validated();
 
         $data['slug'] = Str::slug($data['name']);
