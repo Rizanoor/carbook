@@ -27,7 +27,7 @@ class ProductRequest extends FormRequest
             'transmission' => ['required', 'string'],
             'seats' => ['required', 'string'],
             'fuel' => ['required', 'string'],
-            'price' => ['required', 'string'],
+            'price' => ['required'],
             'time' => ['required', 'string'],
             // 'photos' => ['required', 'string'],
             'long_description' => ['required', 'string'],

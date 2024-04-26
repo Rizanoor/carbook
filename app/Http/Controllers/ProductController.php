@@ -44,17 +44,6 @@ class ProductController extends Controller
 
         $data['slug'] = Str::slug($data['name']);
         // $data['photos'] = Storage::disk('public')->put('assets/product', $request->file('photos'));
-
-        if ($request->hasFile('photos')) {
-            $filePaths = [];
-    
-            foreach ($request->file('photos') as $file) {
-                $path = $file->store('assets/product', 'public');
-                $filePaths[] = $path;
-            }
-    
-            $data['photos'] = json_encode($filePaths);
-        }
         
         Product::create($data);
 
@@ -87,9 +76,20 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductRequest $request, string $id)
     {
-        //
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($request->name);
+
+        $item = Product::findOrFail($id);
+        
+        $item->update($data);
+
+        return redirect(route('product'))->with([
+            'message' => "Product updated successfully",
+            'type' => 'success'
+        ]);    
     }
 
     /**
