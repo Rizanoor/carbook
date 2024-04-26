@@ -8,7 +8,7 @@ import { router } from '@inertiajs/react'
 
 export default function ProductIndex({ auth, product }) {
     function deletePost( id ) {
-        router.delete(`/category/${id}`);
+        router.delete(`/product/${id}`);
     }
 
     return (

@@ -44,7 +44,7 @@ class ProductController extends Controller
 
         $data['slug'] = Str::slug($data['name']);
         // $data['photos'] = Storage::disk('public')->put('assets/product', $request->file('photos'));
-        
+
         Product::create($data);
 
         return redirect(route('product'))->with([
@@ -97,6 +97,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Product::findOrFail($id);
+        $item->delete();
+
+        return redirect()->route('product');
     }
 }
