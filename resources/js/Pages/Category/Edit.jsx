@@ -45,7 +45,7 @@ export default function CategoryEdit({ auth, category }) {
                                     name="name"
                                     value={data.name}
                                     onChange={(e) => setData('name', e.target.value)}
-                                    t="primary-outline"
+                                    variant="primary-outline"
                                     placeholder="Enter the name of category"
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
