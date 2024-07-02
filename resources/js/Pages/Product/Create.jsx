@@ -7,7 +7,7 @@ import TextArea from "@/Components/TextArea";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 
-export default function ProductCreate({ auth, category }) {    
+export default function ProductCreate({ auth, category }) {
     const { data, setData, post, processing, errors } = useForm({
         name: "",
         categories_id: "",
@@ -16,18 +16,22 @@ export default function ProductCreate({ auth, category }) {
         fuel: "",
         price: "",
         time: "",
-        photos: "",
+        photos: null,
         long_description: "",
-        
     });
 
     const handleBack = () => {
-        window.location.href = route('product');
+        window.location.href = route('product.index');
     };
 
     const submit = (e) => {
         e.preventDefault();
-        post(route("product.store"));
+        post(route("product.store"), {
+            data,
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
     };
 
     return (
@@ -45,7 +49,7 @@ export default function ProductCreate({ auth, category }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <form onSubmit={submit}>
+                            <form onSubmit={submit} encType="multipart/form-data">
                                 <InputLabel
                                     htmlFor="name"
                                     value="Name"
@@ -175,8 +179,7 @@ export default function ProductCreate({ auth, category }) {
                                 {errors.time && (
                                     <p className="text-red-500 text-sm mt-1">{errors.time}</p>
                                 )}
-                                {/* disini mas input filenya */}
-{/* 
+
                                 <InputLabel
                                     htmlFor="photos"
                                     value="Photos"
@@ -184,14 +187,14 @@ export default function ProductCreate({ auth, category }) {
                                 />
                                 <input 
                                     type="file"
-                                    id="photos" name="photos"
-                                    placeholder="Enter the name of photos"
-                                    onChange={(e) => setData('photos', e.target.value)}
-                                    value={data.photos}
+                                    id="photos" 
+                                    name="photos"
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    onChange={(e) => setData('photos', e.target.files[0])}
                                 />
                                 {errors.photos && (
                                     <p className="text-red-500 text-sm mt-1">{errors.photos}</p>
-                                )} */}
+                                )}
 
                                 <InputLabel
                                     htmlFor="long_description"
@@ -210,17 +213,17 @@ export default function ProductCreate({ auth, category }) {
                                 {errors.long_description && (
                                     <p className="text-red-500 text-sm mt-1">{errors.long_description}</p>
                                 )}
-                                <SecondaryButton
-                                    onClick={handleBack}
-                                    className="my-4 me-4"
-                                >
-                                    Cancel
-                                </SecondaryButton>
-                                {!processing && (
-                                    <PrimaryButton type="submit" className="my-4">
-                                        Save
-                                    </PrimaryButton>
-                                )}
+                                
+                                <div className="flex items-center justify-between">
+                                    <SecondaryButton onClick={handleBack} className="my-4">
+                                        Cancel
+                                    </SecondaryButton>
+                                    {!processing && (
+                                        <PrimaryButton type="submit" className="my-4">
+                                            Save
+                                        </PrimaryButton>
+                                    )}
+                                </div>
                             </form>
                         </div>
                     </div>

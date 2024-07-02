@@ -40,11 +40,10 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        // disini mas functionnya
         $data = $request->validated();
 
         $data['slug'] = Str::slug($data['name']);
-        // $data['photos'] = Storage::disk('public')->put('assets/product', $request->file('photos'));
+        $data['photos'] = $request->file('photos')->store('assets/product', 'public');
 
         Product::create($data);
 
@@ -68,9 +67,12 @@ class ProductController extends Controller
     public function edit(string $slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();
-        
+        $categories = Category::all();
+
         return Inertia::render('Product/Edit', [
             'product' => $product,
+            'category' => $categories,
+
         ]);
     }
 
@@ -82,9 +84,18 @@ class ProductController extends Controller
         $data = $request->all();
 
         $data['slug'] = Str::slug($request->name);
-
         $item = Product::findOrFail($id);
         
+        if ($request->hasFile('photos')) {
+            // Hapus foto lama jika ada
+            if ($item->photos) {
+                Storage::disk('public')->delete($item->photos);
+            }
+
+            // Simpan foto baru
+            $data['photos'] = $request->file('photos')->store('assets/product', 'public');
+        }
+
         $item->update($data);
 
         return redirect(route('product'))->with([
