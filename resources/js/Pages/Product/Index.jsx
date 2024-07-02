@@ -81,7 +81,7 @@ export default function ProductIndex({ auth, product }) {
                                                 {product.name}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                -- comming soon --
+                                                {product.category ? product.category.name : '-'}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 {product.price.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
