@@ -1,3 +1,4 @@
+import { Link } from "@inertiajs/react";
 
 export default function Navbar() {
     return (
@@ -7,9 +8,9 @@ export default function Navbar() {
                 id="ftco-navbar"
             >
                 <div className="container">
-                    <a className="navbar-brand" href="index.html">
+                    <Link className="navbar-brand" href={route('home')}>
                         Car<span>Book</span>
-                    </a>
+                    </Link>
                     <button
                         className="navbar-toggler"
                         type="button"
@@ -25,9 +26,9 @@ export default function Navbar() {
                     <div className=" navbar-collapse" id="ftco-nav">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item active">
-                                <a href="index.html" className="nav-link">
+                                <Link href={route('home')} className="nav-link">
                                     Home
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
                                 <a href="about.html" className="nav-link">
