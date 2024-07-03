@@ -54,10 +54,18 @@ export default function Navbar() {
                                     Pricing
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <a href="car.html" className="nav-link">
+                            <li
+                                className={`nav-item ${
+                                    activeItem === "cars" ? "active" : ""
+                                }`}
+                            >
+                                <Link
+                                    href={route("cars")}
+                                    className="nav-link"
+                                    onClick={() => setActiveItem("cars")}
+                                >
                                     Cars
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
                                 <a href="blog.html" className="nav-link">
