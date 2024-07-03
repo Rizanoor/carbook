@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { usePage } from "@inertiajs/react";
 import HeroBreadcrumbs from "@/Components/molecules/HeroBreadcumbs";
 import HomeLayout from "@/Layouts/HomeLayout";
 import CardProduct from "@/Components/molecules/CardProduct";
 import ModalBook from '@/Components/molecules/ModalBook';
 
 export default function Cars({ product }) {
+    const { auth } = usePage().props;
     const breadcrumbs = [{ label: "Home", link: "/" }, { label: "Cars" }];
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -17,6 +19,14 @@ export default function Cars({ product }) {
 
     const closeModal = () => {
         setModalOpen(false);
+    };
+
+    const handleBookAction = (item) => {
+        if (auth.user) {
+            openModal(item);
+        } else {
+            alert("Please login to book this vehicle.");
+        }
     };
 
     return (
@@ -37,7 +47,7 @@ export default function Cars({ product }) {
                                         currency: "IDR",
                                     }).format(item.price)}
                                     detailsUrl={`cars/${item.slug}`}
-                                    onBook={() => openModal(item)}
+                                    onBook={() => handleBookAction(item)} // Pass item to handleBookAction
                                 />
                             ))}
                         </div>
