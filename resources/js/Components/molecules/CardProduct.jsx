@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CardProduct({ image, name, brand, price, detailsUrl, bookUrl }) {
+export default function CardProduct({ image, name, brand, price, detailsUrl, onBook }) {
   return (
     <div className="col-md-4">
       <div className="car-wrap rounded">
@@ -19,9 +19,9 @@ export default function CardProduct({ image, name, brand, price, detailsUrl, boo
             </p>
           </div>
           <p className="d-flex mb-0 d-block">
-            <a href={bookUrl} className="btn btn-primary py-2 mr-1">
+            <button onClick={onBook} className="btn btn-primary py-2 mr-1">
               Book now
-            </a>
+            </button>
             <a href={detailsUrl} className="btn btn-secondary py-2 ml-1">
               Details
             </a>

@@ -1,9 +1,23 @@
+import React, { useState } from 'react';
 import HeroBreadcrumbs from "@/Components/molecules/HeroBreadcumbs";
 import HomeLayout from "@/Layouts/HomeLayout";
 import CardProduct from "@/Components/molecules/CardProduct";
+import ModalBook from '@/Components/molecules/ModalBook';
 
 export default function Cars({ product }) {
     const breadcrumbs = [{ label: "Home", link: "/" }, { label: "Cars" }];
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedVehicle, setSelectedVehicle] = useState(null);
+
+    const openModal = (vehicle) => {
+        setSelectedVehicle(vehicle);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
 
     return (
         <>
@@ -23,7 +37,7 @@ export default function Cars({ product }) {
                                         currency: "IDR",
                                     }).format(item.price)}
                                     detailsUrl={`cars/${item.slug}`}
-                                    bookUrl="#"
+                                    onBook={() => openModal(item)}
                                 />
                             ))}
                         </div>
@@ -59,6 +73,8 @@ export default function Cars({ product }) {
                     </div>
                 </section>
             </HomeLayout>
+
+            <ModalBook isOpen={modalOpen} onClose={closeModal} vehicle={selectedVehicle} />
         </>
     );
 }
