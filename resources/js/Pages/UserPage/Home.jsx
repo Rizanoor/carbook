@@ -6,9 +6,11 @@ import Welcome from "@/Components/molecules/Welcome";
 import Blog from "@/Components/organisems/Blog";
 import FeatureVehicle from "@/Components/organisems/FeatureVehicle";
 import HomeLayout from "@/Layouts/HomeLayout";
+import { usePage } from "@inertiajs/react";
 
 export default function Home({ product }) {
-    console.log(product);
+    const { flash } = usePage().props;
+
     const images = product.map((item) => `/storage/${item.photos}`);
 
     const formatPrice = (price) => {
@@ -32,6 +34,11 @@ export default function Home({ product }) {
             <HomeLayout>
                 <Hero />
                 <MakeYourTrip />
+                {flash.message && (
+                    <div className={`alert alert-${flash.type}`}>
+                        {flash.message}
+                    </div>
+                )}
                 <FeatureVehicle images={images} vehicleData={vehicleData} />
                 <Welcome />
                 <Service />

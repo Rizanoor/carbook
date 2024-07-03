@@ -22,7 +22,7 @@ class BookingController extends Controller
         ]);
 
         return redirect(route('home'))->with([
-            'message' => "Booking inserted successfully",
+            'message' => "Booking created successfully",
             'type' => 'success'
         ]);
     }
