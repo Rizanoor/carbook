@@ -1,9 +1,17 @@
-import React from 'react'
+import Hero from '@/Components/molecules/Hero'
+import MakeYourTrip from '@/Components/molecules/MakeYourTrip'
+import FeatureVehicle from '@/Components/organisems/FeatureVehicle'
+import HomeLayout from '@/Layouts/HomeLayout'
 
 export default function Home() {
   return (
     <>
-        <h1>testing home</h1>
+        <HomeLayout>
+            <Hero />
+            <MakeYourTrip />
+            <FeatureVehicle />
+
+        </HomeLayout>
     </>
   )
 }
