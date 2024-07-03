@@ -1,7 +1,8 @@
-import { Link } from "@inertiajs/react";
-import React, { useState } from 'react';
+import { Link, usePage } from "@inertiajs/react";
+import React, { useState } from "react";
 
 export default function Navbar() {
+    const { auth } = usePage().props;
     const [activeItem, setActiveItem] = useState("home");
 
     return (
@@ -67,17 +68,42 @@ export default function Navbar() {
                                     Cars
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <a href="blog.html" className="nav-link">
-                                    Blog
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a href="contact.html" className="nav-link">
-                                    Contact
-                                </a>
-                            </li>
                         </ul>
+                        {auth.user ? (
+                            <div className="nav-item dropdown">
+                                <a
+                                    className="nav-link btn btn-secondary dropdown-toggle"
+                                    href="#"
+                                    id="navbarDropdown"
+                                    role="button"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    Welcome, {auth.user.name} 
+                                </a>
+                                <div
+                                    className="dropdown-menu"
+                                    aria-labelledby="navbarDropdown"
+                                >
+                                    <Link
+                                        href={route("logout")}
+                                        method="post"
+                                        as="button"
+                                        className="dropdown-item"
+                                    >
+                                        Logout
+                                    </Link>
+                                </div>
+                            </div>
+                        ) : (
+                            <Link
+                                href={route("login")}
+                                className="btn btn-secondary py-2 ml-1"
+                            >
+                                Log in
+                            </Link>
+                        )}
                     </div>
                 </div>
             </nav>
