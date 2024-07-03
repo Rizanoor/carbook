@@ -1,90 +1,47 @@
-import React, { useState } from 'react';
+import React from "react";
 import { usePage } from "@inertiajs/react";
 import HeroBreadcrumbs from "@/Components/molecules/HeroBreadcumbs";
 import HomeLayout from "@/Layouts/HomeLayout";
 import CardProduct from "@/Components/molecules/CardProduct";
-import ModalBook from '@/Components/molecules/ModalBook';
 
-export default function Cars({ product }) {
-    const { auth } = usePage().props;
+export default function Cars({ products }) {
+    const { flash } = usePage().props;
     const breadcrumbs = [{ label: "Home", link: "/" }, { label: "Cars" }];
 
-    const [modalOpen, setModalOpen] = useState(false);
-    const [selectedVehicle, setSelectedVehicle] = useState(null);
-
-    const openModal = (vehicle) => {
-        setSelectedVehicle(vehicle);
-        setModalOpen(true);
+    const formatPrice = (price) => {
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
+        }).format(price);
     };
 
-    const closeModal = () => {
-        setModalOpen(false);
-    };
-
-    const handleBookAction = (item) => {
-        if (auth.user) {
-            openModal(item);
-        } else {
-            alert("Please login to book this vehicle.");
-        }
-    };
+    const vehicleData = products.map((item) => ({
+        id: item.id,
+        name: item.name,
+        brand: item.category.name,
+        time: item.time,
+        price: formatPrice(item.price),
+        slug: item.slug,
+        imageUrl: `/storage/${item.photos}`,
+    }));
 
     return (
-        <>
-            <HomeLayout>
-                <HeroBreadcrumbs breadcrumbs={breadcrumbs} title="Cars" />
-                <section className="ftco-section bg-light">
-                    <div className="container">
-                        <div className="row">
-                            {product.map((item) => (
-                                <CardProduct
-                                    key={item.id}
-                                    image={`/storage/${item.photos}`}
-                                    name={item.name}
-                                    brand={item.category.name}
-                                    price={new Intl.NumberFormat("id-ID", {
-                                        style: "currency",
-                                        currency: "IDR",
-                                    }).format(item.price)}
-                                    detailsUrl={`cars/${item.slug}`}
-                                    onBook={() => handleBookAction(item)} // Pass item to handleBookAction
-                                />
-                            ))}
-                        </div>
-                        <div className="row mt-5">
-                            <div className="col text-center">
-                                <div className="block-27">
-                                    <ul>
-                                        <li>
-                                            <a href="#">&lt;</a>
-                                        </li>
-                                        <li className="active">
-                                            <span>1</span>
-                                        </li>
-                                        <li>
-                                            <a href="#">2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">3</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">4</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">5</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">&gt;</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+        <HomeLayout>
+            <HeroBreadcrumbs breadcrumbs={breadcrumbs} title="Cars" />
+            {flash.message && (
+                <div className={`alert alert-${flash.type}`}>
+                    {flash.message}
+                </div>
+            )}
+            <section className="ftco-section bg-light">
+                <div className="container">
+                    <div className="row">
+                        {vehicleData.map((product) => (
+                            <CardProduct key={product.id} product={product} />
+                        ))}
                     </div>
-                </section>
-            </HomeLayout>
-
-            <ModalBook isOpen={modalOpen} onClose={closeModal} vehicle={selectedVehicle} />
-        </>
+                </div>
+            </section>
+        </HomeLayout>
     );
 }

@@ -14,7 +14,7 @@ class CarsController extends Controller
         $product = Product::with('category')->get();
 
         return Inertia::render('UserPage/Cars', [
-            'product' => $product,
+            'products' => $product,
         ]);
     }
 
