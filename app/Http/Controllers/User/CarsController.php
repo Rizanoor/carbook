@@ -17,4 +17,13 @@ class CarsController extends Controller
             'product' => $product,
         ]);
     }
+
+    public function detail($slug)
+    {
+        $product = Product::where('slug', $slug)->with('category')->firstOrFail();
+        
+        return Inertia::render('UserPage/CarsDetail', [
+            'product' => $product,
+        ]);
+    }
 }

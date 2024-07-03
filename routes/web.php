@@ -15,6 +15,7 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
 Route::get('/cars', [CarsController::class, 'index'])->name('cars');
+Route::get('/cars/{slug}', [CarsController::class, 'detail'])->name('cars.detail');
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

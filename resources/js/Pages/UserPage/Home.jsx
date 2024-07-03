@@ -22,6 +22,7 @@ export default function Home({ product }) {
         brand: item.category.name,
         time: item.time,
         price: formatPrice(item.price),
+        slug: item.slug,
     }));
 
     return (
