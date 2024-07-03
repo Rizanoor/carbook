@@ -12,8 +12,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $product = Product::count();
-
+        $product = Product::with('category')->get();
+        
         return Inertia::render('UserPage/Home', [
             'product' => $product,
         ]);
