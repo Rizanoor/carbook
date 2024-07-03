@@ -1,6 +1,25 @@
-import React from "react";
+import { useForm } from "@inertiajs/react";
 
-export default function ModalBook({ isOpen, onClose }) {
+export default function ModalBook({ isOpen, onClose, products_id }) {
+    const { data, setData, post, reset } = useForm({
+        products_id: products_id,
+        pickup_location: '',
+        drop_location: '',
+        pickup_date: '',
+        drop_date: '',
+        pickup_time: '',
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        post('/booking/store', {
+            onSuccess: () => {
+                reset();
+                onClose();
+            },
+        });
+    };
+
     return (
         <>
             <div
@@ -26,7 +45,7 @@ export default function ModalBook({ isOpen, onClose }) {
                         <div className="modal-body">
                             <div className="col-md-12 align-items-center">
                                 <form
-                                    action="#"
+                                    onSubmit={handleSubmit}
                                     className="request-form bg-primary"
                                 >
                                     <h2>Make your trip</h2>
@@ -36,8 +55,12 @@ export default function ModalBook({ isOpen, onClose }) {
                                         </label>
                                         <input
                                             type="text"
+                                            name="pickup_location"
                                             className="form-control"
                                             placeholder="City, Airport, Station, etc"
+                                            value={data.pickup_location}
+                                            onChange={e => setData('pickup_location', e.target.value)}
+                                            required
                                         />
                                     </div>
                                     <div className="form-group">
@@ -46,8 +69,12 @@ export default function ModalBook({ isOpen, onClose }) {
                                         </label>
                                         <input
                                             type="text"
+                                            name="drop_location"
                                             className="form-control"
                                             placeholder="City, Airport, Station, etc"
+                                            value={data.drop_location}
+                                            onChange={e => setData('drop_location', e.target.value)}
+                                            required
                                         />
                                     </div>
                                     <div className="d-flex">
@@ -58,8 +85,12 @@ export default function ModalBook({ isOpen, onClose }) {
                                             <input
                                                 type="date"
                                                 className="form-control"
-                                                id="book_pick_date"
+                                                id="pickup_date"
+                                                name="pickup_date"
                                                 placeholder="Date"
+                                                value={data.pickup_date}
+                                                onChange={e => setData('pickup_date', e.target.value)}
+                                                required
                                             />
                                         </div>
                                         <div className="form-group ml-2">
@@ -69,8 +100,12 @@ export default function ModalBook({ isOpen, onClose }) {
                                             <input
                                                 type="date"
                                                 className="form-control"
-                                                id="book_off_date"
+                                                id="drop_date"
+                                                name="drop_date"
                                                 placeholder="Date"
+                                                value={data.drop_date}
+                                                onChange={e => setData('drop_date', e.target.value)}
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -79,10 +114,14 @@ export default function ModalBook({ isOpen, onClose }) {
                                             Pick-up time
                                         </label>
                                         <input
-                                            type="text"
+                                            type="time"
                                             className="form-control"
-                                            id="time_pick"
+                                            id="pickup_time"
+                                            name="pickup_time"
                                             placeholder="Time"
+                                            value={data.pickup_time}
+                                            onChange={e => setData('pickup_time', e.target.value)}
+                                            required
                                         />
                                     </div>
                                     <div className="form-group">

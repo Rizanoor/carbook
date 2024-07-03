@@ -77,7 +77,7 @@ const FeatureVehicle = ({ images, vehicleData }) => {
                 </div>
             </div>
 
-            <ModalBook isOpen={modalOpen} onClose={closeModal} />
+            <ModalBook isOpen={modalOpen} onClose={closeModal} products_id={currentVehicle.id} />
         </section>
     );
 };

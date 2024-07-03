@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\CarsController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\PricingController;
@@ -16,6 +17,12 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
 Route::get('/cars', [CarsController::class, 'index'])->name('cars');
 Route::get('/cars/{slug}', [CarsController::class, 'detail'])->name('cars.detail');
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
+
+});
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
