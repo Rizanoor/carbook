@@ -1,6 +1,9 @@
 import { Link } from "@inertiajs/react";
+import React, { useState } from 'react';
 
 export default function Navbar() {
+    const [activeItem, setActiveItem] = useState("home");
+
     return (
         <>
             <nav
@@ -8,7 +11,7 @@ export default function Navbar() {
                 id="ftco-navbar"
             >
                 <div className="container">
-                    <Link className="navbar-brand" href={route('home')}>
+                    <Link className="navbar-brand" href={route("home")}>
                         Car<span>Book</span>
                     </Link>
                     <button
@@ -25,13 +28,29 @@ export default function Navbar() {
 
                     <div className=" navbar-collapse" id="ftco-nav">
                         <ul className="navbar-nav ml-auto">
-                            <li className="nav-item active">
-                                <Link href={route('home')} className="nav-link">
+                            <li
+                                className={`nav-item ${
+                                    activeItem === "home" ? "active" : ""
+                                }`}
+                            >
+                                <Link
+                                    href={route("home")}
+                                    className="nav-link"
+                                    onClick={() => setActiveItem("home")}
+                                >
                                     Home
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link href={route('pricing')} className="nav-link">
+                            <li
+                                className={`nav-item ${
+                                    activeItem === "pricing" ? "active" : ""
+                                }`}
+                            >
+                                <Link
+                                    href={route("pricing")}
+                                    className="nav-link"
+                                    onClick={() => setActiveItem("pricing")}
+                                >
                                     Pricing
                                 </Link>
                             </li>
