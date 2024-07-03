@@ -8,7 +8,7 @@ export default function MakeYourTrip() {
                     <div className="row no-gutters">
                         <div className="col-md-12 featured-top">
                             <div className="row no-gutters">
-                                <div className="col-md-4 d-flex align-items-center">
+                                <div className="col-md-3 align-items-center">
                                     <form
                                         action="#"
                                         className="request-form bg-primary"
@@ -84,7 +84,7 @@ export default function MakeYourTrip() {
                                         </div>
                                     </form>
                                 </div>
-                                <div className="col-md-8 d-flex align-items-center">
+                                <div className="col-md-9 d-flex align-items-center">
                                     <div className="services-wrap rounded-right w-100">
                                         <h3 className="heading-section mb-4">
                                             Better Way to Rent Your Perfect Cars
