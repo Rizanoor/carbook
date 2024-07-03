@@ -71,7 +71,7 @@ export default function ProductEdit({ auth, product, category }) {
                                     onChange={(e) => setData("name", e.target.value)}
                                     variant="primary-outline"
                                     placeholder="Enter the name of product"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                                 {errors.name && (
                                     <p className="text-red-500 text-sm mt-1">{errors.name}</p>
@@ -83,7 +83,7 @@ export default function ProductEdit({ auth, product, category }) {
                                     className="block text-gray-700 text-lg font-bold py-3"
                                 />
                                 <select
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     name="categories_id"
                                     value={data.categories_id}
                                     onChange={(e) => setData('categories_id', e.target.value)}
@@ -109,7 +109,7 @@ export default function ProductEdit({ auth, product, category }) {
                                     onChange={(e) => setData("transmission", e.target.value)}
                                     variant="primary-outline"
                                     placeholder="Enter the transmission of product"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                                 {errors.transmission && (
                                     <p className="text-red-500 text-sm mt-1">{errors.transmission}</p>
@@ -127,7 +127,7 @@ export default function ProductEdit({ auth, product, category }) {
                                     onChange={(e) => setData("seats", e.target.value)}
                                     variant="primary-outline"
                                     placeholder="Enter the seats of product"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                                 {errors.seats && (
                                     <p className="text-red-500 text-sm mt-1">{errors.seats}</p>
@@ -145,7 +145,7 @@ export default function ProductEdit({ auth, product, category }) {
                                     onChange={(e) => setData("fuel", e.target.value)}
                                     variant="primary-outline"
                                     placeholder="Enter the fuel of product"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                                 {errors.fuel && (
                                     <p className="text-red-500 text-sm mt-1">{errors.fuel}</p>
@@ -163,7 +163,7 @@ export default function ProductEdit({ auth, product, category }) {
                                     onChange={(e) => setData("price", e.target.value)}
                                     variant="primary-outline"
                                     placeholder="Enter the price of product"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                                 {errors.price && (
                                     <p className="text-red-500 text-sm mt-1">{errors.price}</p>
@@ -181,7 +181,7 @@ export default function ProductEdit({ auth, product, category }) {
                                     onChange={(e) => setData("time", e.target.value)}
                                     variant="primary-outline"
                                     placeholder="Enter the time of product"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                                 {errors.time && (
                                     <p className="text-red-500 text-sm mt-1">{errors.time}</p>
@@ -196,7 +196,7 @@ export default function ProductEdit({ auth, product, category }) {
                                     type="file"
                                     id="photos" 
                                     name="photos"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     onChange={handlePhotoChange}
                                 />
                                 {errors.photos && (
@@ -220,7 +220,7 @@ export default function ProductEdit({ auth, product, category }) {
                                     onChange={(e) => setData("long_description", e.target.value)}
                                     variant="primary-outline"
                                     placeholder="Enter the description of product"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                                 {errors.long_description && (
                                     <p className="text-red-500 text-sm mt-1">{errors.long_description}</p>

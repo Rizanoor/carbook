@@ -45,7 +45,7 @@ export default function CategoryCreate({ auth }) {
                                     name="name"
                                     variant="primary-outline"
                                     placeholder="Enter the name of categories"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     onChange={(e) => setData('name', e.target.value)}
                                     value={data.name}
                                 />

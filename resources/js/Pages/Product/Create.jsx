@@ -60,7 +60,7 @@ export default function ProductCreate({ auth, category }) {
                                     name="name"
                                     variant="primary-outline"
                                     placeholder="Enter the name of categories"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     onChange={(e) => setData('name', e.target.value)}
                                     value={data.name}
                                 />
@@ -75,7 +75,7 @@ export default function ProductCreate({ auth, category }) {
                                 />
                                 
                                 <select
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     name="categories_id"
                                     value={data.categories_id} 
                                     onChange={(e) => setData('categories_id', e.target.value)}
@@ -100,7 +100,7 @@ export default function ProductCreate({ auth, category }) {
                                     name="transmission"
                                     variant="primary-outline"
                                     placeholder="Enter the name of transmission"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     onChange={(e) => setData('transmission', e.target.value)}
                                     value={data.transmission}
                                 />
@@ -118,7 +118,7 @@ export default function ProductCreate({ auth, category }) {
                                     name="seats"
                                     variant="primary-outline"
                                     placeholder="Enter the name of seats"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     onChange={(e) => setData('seats', e.target.value)}
                                     value={data.seats}
                                 />
@@ -136,7 +136,7 @@ export default function ProductCreate({ auth, category }) {
                                     name="fuel"
                                     variant="primary-outline"
                                     placeholder="Enter the name of fuel"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     onChange={(e) => setData('fuel', e.target.value)}
                                     value={data.fuel}
                                 />
@@ -154,7 +154,7 @@ export default function ProductCreate({ auth, category }) {
                                     name="price"
                                     variant="primary-outline"
                                     placeholder="Enter the name of price"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     onChange={(e) => setData('price', e.target.value)}
                                     value={data.price}
                                 />
@@ -172,7 +172,7 @@ export default function ProductCreate({ auth, category }) {
                                     name="time"
                                     variant="primary-outline"
                                     placeholder="Enter the name of time"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     onChange={(e) => setData('time', e.target.value)}
                                     value={data.time}
                                 />
@@ -189,7 +189,7 @@ export default function ProductCreate({ auth, category }) {
                                     type="file"
                                     id="photos" 
                                     name="photos"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     onChange={(e) => setData('photos', e.target.files[0])}
                                 />
                                 {errors.photos && (
@@ -206,7 +206,7 @@ export default function ProductCreate({ auth, category }) {
                                     name="long_description"
                                     variant="primary-outline"
                                     placeholder="Enter the name of description"
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     onChange={(e) => setData('long_description', e.target.value)}
                                     value={data.long_description}
                                 />
