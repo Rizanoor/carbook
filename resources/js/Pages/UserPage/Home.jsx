@@ -8,8 +8,6 @@ import FeatureVehicle from "@/Components/organisems/FeatureVehicle";
 import HomeLayout from "@/Layouts/HomeLayout";
 
 export default function Home({ product }) {
-    console.log(product);
-
     const images = product.map((item) => `/storage/${item.photos}`);
 
     const formatPrice = (price) => {

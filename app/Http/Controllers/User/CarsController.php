@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -10,6 +11,10 @@ class CarsController extends Controller
 {
     public function index()
     {
-        return Inertia::render('UserPage/Cars');
+        $product = Product::with('category')->get();
+
+        return Inertia::render('UserPage/Cars', [
+            'product' => $product,
+        ]);
     }
 }
