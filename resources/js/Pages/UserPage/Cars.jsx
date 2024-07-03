@@ -22,7 +22,7 @@ export default function Cars({ product }) {
                                         style: "currency",
                                         currency: "IDR",
                                     }).format(item.price)}
-                                    detailsUrl={`car-single.html?slug=${item.slug}`}
+                                    detailsUrl={`cars/${item.slug}`}
                                     bookUrl="#"
                                 />
                             ))}
