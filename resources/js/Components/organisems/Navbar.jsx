@@ -31,19 +31,9 @@ export default function Navbar() {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <a href="about.html" className="nav-link">
-                                    About
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a href="services.html" className="nav-link">
-                                    Services
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a href="pricing.html" className="nav-link">
+                                <Link href={route('pricing')} className="nav-link">
                                     Pricing
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
                                 <a href="car.html" className="nav-link">
