@@ -94,6 +94,12 @@ export default function Navbar() {
                                     >
                                         Logout
                                     </Link>
+                                    <Link
+                                        href={route("setting")}
+                                        className="dropdown-item"
+                                    >
+                                        Setting
+                                    </Link>
                                 </div>
                             </div>
                         ) : (
