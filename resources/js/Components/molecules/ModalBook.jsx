@@ -58,7 +58,7 @@ export default function ModalBook({ isOpen, onClose, products_id, price }) {
                                             type="text"
                                             name="pickup_location"
                                             className="form-control"
-                                            placeholder="City, Airport, Station, etc"
+                                            placeholder="Titik Koordinat Maps"
                                             value={data.pickup_location}
                                             onChange={e => setData('pickup_location', e.target.value)}
                                             required
@@ -72,7 +72,7 @@ export default function ModalBook({ isOpen, onClose, products_id, price }) {
                                             type="text"
                                             name="drop_location"
                                             className="form-control"
-                                            placeholder="City, Airport, Station, etc"
+                                            placeholder="Titik Koordinat Maps"
                                             value={data.drop_location}
                                             onChange={e => setData('drop_location', e.target.value)}
                                             required

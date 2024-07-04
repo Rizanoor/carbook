@@ -87,18 +87,18 @@ export default function Navbar() {
                                     aria-labelledby="navbarDropdown"
                                 >
                                     <Link
+                                        href={route("setting")}
+                                        className="dropdown-item"
+                                    >
+                                        Setting
+                                    </Link>
+                                    <Link
                                         href={route("logout")}
                                         method="post"
                                         as="button"
                                         className="dropdown-item"
                                     >
                                         Logout
-                                    </Link>
-                                    <Link
-                                        href={route("setting")}
-                                        className="dropdown-item"
-                                    >
-                                        Setting
                                     </Link>
                                 </div>
                             </div>

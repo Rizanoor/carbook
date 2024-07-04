@@ -91,8 +91,9 @@ export default function Setting({ book }) {
                                                     <tr>
                                                         <th>No</th>
                                                         <th>Mobil</th>
-                                                        <th>Lokasi Pickup</th>
+                                                        <th>Lokasi</th>
                                                         <th>Tanggal Pickup</th>
+                                                        <th>Tanggal Drop</th>
                                                         <th>
                                                             Status Transaksi
                                                         </th>
@@ -114,13 +115,22 @@ export default function Setting({ book }) {
                                                                     }
                                                                 </td>
                                                                 <td>
-                                                                    {
-                                                                        book.pickup_location
-                                                                    }
+                                                                    <a
+                                                                        href={book.pickup_location}
+                                                                        target="_blank"
+                                                                        class="badge badge-primary"
+                                                                    >
+                                                                        Lihat Lokasi
+                                                                    </a>
                                                                 </td>
                                                                 <td>
                                                                     {
                                                                         book.pickup_date
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    {
+                                                                        book.drop_date
                                                                     }
                                                                 </td>
                                                                 <td>
