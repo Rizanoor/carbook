@@ -11,7 +11,14 @@ class BookingController extends Controller
 {
     public function store(Request $request)
     {
-        dd($request);
+        $pickupDate = new \DateTime($request->pickup_date);
+        $dropDate = new \DateTime($request->drop_date);
+        $duration = $dropDate->diff($pickupDate)->days + 1;
+
+        $price = intval(preg_replace('/[^\d]/', '', $request->price));
+
+        $totalPrice = $duration * $price;
+
         booking::create([
             'users_id' => Auth::user()->id,
             'products_id' => $request->products_id,
@@ -21,7 +28,7 @@ class BookingController extends Controller
             'drop_date' => $request->drop_date,
             'pickup_time' => $request->pickup_time,
             'transaction_status' => 'pending',
-            'total_price' => $request->total_price,
+            'price' => $totalPrice,
         ]);
 
         return redirect(route('home'))->with([

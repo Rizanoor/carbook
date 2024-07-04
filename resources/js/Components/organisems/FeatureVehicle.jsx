@@ -113,6 +113,7 @@ const FeatureVehicle = ({ images, vehicleData }) => {
                     isOpen={modalOpen}
                     onClose={closeModal}
                     products_id={currentVehicle.id}
+                    price={currentVehicle.price}
                 />
             )}
         </section>

@@ -59,6 +59,7 @@ const CardProduct = ({ product }) => {
                     isOpen={modalOpen}
                     onClose={closeModal}
                     products_id={product.id}
+                    price={product.price}
                 />
             )}
         </>

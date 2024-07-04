@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('drop_date');
             $table->time('pickup_time');
             $table->string('transaction_status'); //UNPAID/PENDING/SUCCESS/FAILED
-            $table->integer('total_price');
+            $table->integer('price');
 
             $table->softDeletes();
             $table->timestamps();

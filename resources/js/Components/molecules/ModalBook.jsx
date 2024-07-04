@@ -1,8 +1,9 @@
 import { useForm } from "@inertiajs/react";
 
-export default function ModalBook({ isOpen, onClose, products_id }) {
+export default function ModalBook({ isOpen, onClose, products_id, price }) {
     const { data, setData, post, reset } = useForm({
         products_id: products_id,
+        price: price,
         pickup_location: '',
         drop_location: '',
         pickup_date: '',
