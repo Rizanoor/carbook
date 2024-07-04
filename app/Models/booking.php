@@ -14,13 +14,13 @@ class booking extends Model
     use SoftDeletes, HasUuids;
 
     protected $fillable = [
-        'users_id', 
-        'products_id', 
+        'users_id',
+        'products_id',
         'pickup_location',
-        'drop_location', 
-        'pickup_date' , 
+        'drop_location',
+        'pickup_date',
         'drop_date',
-        'pickup_time', 
+        'pickup_time',
         'transaction_status',
         'price',
     ];
