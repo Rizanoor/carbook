@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingListController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
@@ -46,6 +47,11 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
     Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+    
+    Route::get('/booking-list', [BookingListController::class, 'index'])->name('bookinglist');
+    Route::get('/booking-list/edit/{id}', [BookingListController::class, 'edit'])->name('bookinglist.edit');
+    Route::post('/booking-list/update/{id}', [BookingListController::class, 'update'])->name('bookinglist.update');
+    Route::delete('/booking-list/{id}', [BookingListController::class, 'destroy'])->name('bookinglist.destroy');
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

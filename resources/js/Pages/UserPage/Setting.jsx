@@ -118,7 +118,7 @@ export default function Setting({ book }) {
                                                                     <a
                                                                         href={book.pickup_location}
                                                                         target="_blank"
-                                                                        class="badge badge-primary"
+                                                                        className="badge badge-primary"
                                                                     >
                                                                         Lihat Lokasi
                                                                     </a>
