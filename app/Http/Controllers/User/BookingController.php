@@ -11,6 +11,7 @@ class BookingController extends Controller
 {
     public function store(Request $request)
     {
+        dd($request);
         booking::create([
             'users_id' => Auth::user()->id,
             'products_id' => $request->products_id,
@@ -19,6 +20,8 @@ class BookingController extends Controller
             'pickup_date' => $request->pickup_date,
             'drop_date' => $request->drop_date,
             'pickup_time' => $request->pickup_time,
+            'transaction_status' => 'pending',
+            'total_price' => $request->total_price,
         ]);
 
         return redirect(route('home'))->with([

@@ -21,6 +21,8 @@ class booking extends Model
         'pickup_date' , 
         'drop_date',
         'pickup_time', 
+        'transaction_status',
+        'total_price',
     ];
 
     protected $hidden = [];
